@@ -15,7 +15,6 @@ public class FoundationBridgeLeft extends OpMode {
         STATE_PAUSE2,
         STATE_RELEASE,
         STATE_PARK,
-        STATE_BRIDGE,
         STATE_HALT
     }
 
@@ -66,8 +65,8 @@ public class FoundationBridgeLeft extends OpMode {
                     robot.robotStuff.FRight.setPower(0);
                     robot.robotStuff.BLeft.setPower(0);
                     robot.robotStuff.BRight.setPower(0);
-                    robot.robotStuff.rightHook.setPosition(.2);
-                    robot.robotStuff.leftHook.setPosition(.8);
+                    robot.robotStuff.rightHook.setPosition(.3);
+                    robot.robotStuff.leftHook.setPosition(.67);
                     newState(State.STATE_TURN);
                 }
                 break;
@@ -83,7 +82,7 @@ public class FoundationBridgeLeft extends OpMode {
                 break;
 
             case STATE_PAUSE2:
-                if (Runtime.milliseconds() > 120) {
+                if (Runtime.milliseconds() > 100) {
                     robot.robotStuff.FLeft.setPower(0);
                     robot.robotStuff.FRight.setPower(0);
                     robot.robotStuff.BLeft.setPower(0);
@@ -100,7 +99,7 @@ public class FoundationBridgeLeft extends OpMode {
                     robot.robotStuff.BRight.setPower(0);
                     robot.robotStuff.rightHook.setPosition(.8);
                     robot.robotStuff.leftHook.setPosition(.1);
-                    newState(State.STATE_PARK);
+                    newState(State.STATE_HALT);
                 }
                 break;
 
@@ -110,22 +109,12 @@ public class FoundationBridgeLeft extends OpMode {
                     robot.robotStuff.FRight.setPower(.5);
                     robot.robotStuff.BLeft.setPower(.5);
                     robot.robotStuff.BRight.setPower(.5);
-                    newState(State.STATE_BRIDGE);
-                }
-                break;
-
-            case STATE_BRIDGE:
-                if (Runtime.milliseconds() > 150) {
-                    robot.robotStuff.FLeft.setPower(-.5);
-                    robot.robotStuff.FRight.setPower(.5);
-                    robot.robotStuff.BLeft.setPower(.5);
-                    robot.robotStuff.BRight.setPower(-.5);
                     newState(State.STATE_HALT);
                 }
                 break;
 
             case STATE_HALT:
-                if (Runtime.milliseconds() > 200) {
+                if (Runtime.milliseconds() > 50) {
                     robot.robotStuff.stop();
                 }
                 break;
